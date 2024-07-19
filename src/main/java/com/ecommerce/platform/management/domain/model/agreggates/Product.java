@@ -1,5 +1,6 @@
 package com.ecommerce.platform.management.domain.model.agreggates;
 
+import com.ecommerce.platform.management.domain.model.commands.CreateProductCommand;
 import com.ecommerce.platform.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -33,6 +34,12 @@ public class Product extends AuditableAbstractAggregateRoot<Product> {
         this.user=user;
     }
     public Product() {
+    }
+    public Product (CreateProductCommand command){
+        this.name = command.name();
+        this.description = command.description();
+        this.price = command.price();
+        this.stock = command.stock();
     }
 
 }
