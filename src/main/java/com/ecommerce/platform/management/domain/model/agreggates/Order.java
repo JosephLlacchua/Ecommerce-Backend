@@ -1,6 +1,7 @@
 package com.ecommerce.platform.management.domain.model.agreggates;
 
 import com.ecommerce.platform.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
+import com.ecommerce.platform.user.domain.model.aggregates.UserDetails;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
@@ -18,7 +19,7 @@ public class Order extends AuditableAbstractAggregateRoot<Order> {
     private double total;
 
     @ManyToOne
-    private User user;
+    private UserDetails userDetails;
 
     @OneToOne(mappedBy = "order")
     private DetailedOrder detailedOrder;

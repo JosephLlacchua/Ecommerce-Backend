@@ -2,6 +2,7 @@ package com.ecommerce.platform.management.domain.model.agreggates;
 
 import com.ecommerce.platform.management.domain.model.commands.CreateProductCommand;
 import com.ecommerce.platform.shared.domain.model.aggregates.AuditableAbstractAggregateRoot;
+import com.ecommerce.platform.user.domain.model.aggregates.UserDetails;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -20,18 +21,18 @@ public class Product extends AuditableAbstractAggregateRoot<Product> {
     private int stock;
 
     @ManyToOne
-    private User user;
+    private UserDetails userDetails;
 
     @OneToMany(mappedBy = "product")
     private List<DetailedOrder> detailedOrders;
 
-    public Product(String name, String description, String image, double price, int stock,User user) {
+    public Product(String name, String description, String image, double price, int stock,UserDetails userDetails) {
         this.name = name;
         this.description = description;
         this.image = image;
         this.price = price;
         this.stock = stock;
-        this.user=user;
+        this.userDetails=userDetails;
     }
     public Product() {
     }
